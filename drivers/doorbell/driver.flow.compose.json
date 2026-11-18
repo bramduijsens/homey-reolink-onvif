@@ -3,6 +3,46 @@
     {
       "id": "doorbell_pressed",
       "title": { "en": "Doorbell pressed" }
+    },
+    {
+      "id": "alarm_person_true",
+      "title": { "en": "Person detected" }
+    },
+    {
+      "id": "alarm_person_false",
+      "title": { "en": "Person no longer detected" }
+    },
+    {
+      "id": "alarm_vehicle_true",
+      "title": { "en": "Vehicle detected" }
+    },
+    {
+      "id": "alarm_vehicle_false",
+      "title": { "en": "Vehicle no longer detected" }
+    },
+    {
+      "id": "alarm_pet_true",
+      "title": { "en": "Pet detected" }
+    },
+    {
+      "id": "alarm_pet_false",
+      "title": { "en": "Pet no longer detected" }
+    },
+    {
+      "id": "alarm_face_true",
+      "title": { "en": "Face detected" }
+    },
+    {
+      "id": "alarm_face_false",
+      "title": { "en": "Face no longer detected" }
+    },
+    {
+      "id": "alarm_package_true",
+      "title": { "en": "Package detected" }
+    },
+    {
+      "id": "alarm_package_false",
+      "title": { "en": "Package no longer detected" }
     }
   ]
 }

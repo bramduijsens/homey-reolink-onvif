@@ -1,0 +1,21 @@
+{
+    "type":  "boolean",
+    "title":  {
+                  "en":  "Package"
+              },
+    "titleTrue":  {
+                      "en":  "Package detected"
+                  },
+    "titleFalse":  {
+                       "en":  "No package"
+                   },
+    "insightsTitleTrue":  {
+                              "en":  "Package detected"
+                          },
+    "insightsTitleFalse":  {
+                               "en":  "Package no longer detected"
+                           },
+    "getable":  true,
+    "setable":  false,
+    "uiComponent":  "sensor"
+}

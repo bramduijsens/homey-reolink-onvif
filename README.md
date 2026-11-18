@@ -19,18 +19,20 @@ The driver `Reolink Doorbell` uses the Homey device class `doorbell` and connect
 | Capability | Source ONVIF topic(s) |
 | --- | --- |
 | `alarm_motion` | `RuleEngine/CellMotionDetector/Motion`, `VideoSource/MotionAlarm` |
-| `alarm_generic.person` | `RuleEngine/MyRuleDetector/PeopleDetect` |
-| `alarm_generic.vehicle` | `RuleEngine/MyRuleDetector/VehicleDetect`, `RuleEngine/MyRuleDetector/Non_Motor_VehicleDetect` |
-| `alarm_generic.pet` | `RuleEngine/MyRuleDetector/DogCatDetect` |
-| `alarm_generic.face` | `RuleEngine/MyRuleDetector/FaceDetect` |
-| `alarm_generic.package` | `RuleEngine/MyRuleDetector/Package` |
-| `alarm_generic.doorbell` | `RuleEngine/MyRuleDetector/Visitor` |
+| `alarm_person` | `RuleEngine/MyRuleDetector/PeopleDetect` |
+| `alarm_vehicle` | `RuleEngine/MyRuleDetector/VehicleDetect`, `RuleEngine/MyRuleDetector/Non_Motor_VehicleDetect` |
+| `alarm_pet` | `RuleEngine/MyRuleDetector/DogCatDetect` |
+| `alarm_face` | `RuleEngine/MyRuleDetector/FaceDetect` |
+| `alarm_package` | `RuleEngine/MyRuleDetector/Package` |
+| `alarm_doorbell` | `RuleEngine/MyRuleDetector/Visitor` |
+
+The person, vehicle, pet, face, package and doorbell capabilities are custom boolean capabilities (defined in `.homeycompose/capabilities/`), so they get their own names in the device tile and in Flow instead of several identical "generic alarm" entries.
 
 When several topics map to the same capability, the capability is active while any of them is active.
 
 Other features:
 
-- **Flow trigger "Doorbell pressed"**, fired only on a real press (not on the initial state read when the app connects).
+- **Flow triggers**: "Doorbell pressed" (fired only on a real press, not on the initial state read when the app connects), plus "detected" / "no longer detected" triggers for person, vehicle, pet, face and package. Motion uses the standard Homey motion alarm cards.
 - **Camera snapshot** shown on the device tile, fetched from the doorbell over HTTP digest authentication and refreshed (at most every 2 seconds) when an event becomes active.
 - **Device settings**: host, ONVIF port, username and password can be changed after pairing; model and firmware are shown read-only.
 - **Pairing**: finds doorbells with WS-Discovery or lets you enter the IP address manually, and checks the credentials before the device is added.
@@ -78,7 +80,7 @@ The app was built step by step, with the doorbell as the reference device and AI
 **Not yet tested:**
 
 - running the app on a Homey (`homey app run`), including pairing, discovery from the Homey, and the camera image tile,
-- whether Homey creates Flow cards for the `alarm_generic.*` sub-capabilities (the documentation says sub-capabilities do not get automatic cards; custom triggers will be added if needed),
+- whether Homey fires the "detected" / "no longer detected" triggers automatically when the custom capabilities change (an earlier version with `alarm_generic.*` sub-capabilities had no usable Flow cards, so it was replaced),
 - vehicle, pet, face and package detection (only motion, person and doorbell have been triggered on the real device),
 - long-running behaviour (subscription renewal over many hours, network loss, doorbell reboot),
 - other doorbell models and firmware versions.

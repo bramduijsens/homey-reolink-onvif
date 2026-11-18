@@ -4,9 +4,9 @@
   "compatibility": ">=12.0.0",
   "sdk": 3,
   "platforms": ["local"],
-  "name": { "en": "Reolink ONVIF" },
+  "name": { "en": "Reolink" },
   "description": {
-    "en": "Adds Reolink video doorbells to Homey over ONVIF: motion, person, vehicle, pet, face and package detection, doorbell press and camera snapshots."
+    "en": "Know who is at your door, the moment they arrive"
   },
   "category": ["security"],
   "brandColor": "#2B6CB0",

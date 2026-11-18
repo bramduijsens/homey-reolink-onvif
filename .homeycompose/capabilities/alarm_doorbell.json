@@ -1,0 +1,21 @@
+{
+    "type":  "boolean",
+    "title":  {
+                  "en":  "Doorbell"
+              },
+    "titleTrue":  {
+                      "en":  "Doorbell pressed"
+                  },
+    "titleFalse":  {
+                       "en":  "Doorbell idle"
+                   },
+    "insightsTitleTrue":  {
+                              "en":  "Doorbell pressed"
+                          },
+    "insightsTitleFalse":  {
+                               "en":  "Doorbell released"
+                           },
+    "getable":  true,
+    "setable":  false,
+    "uiComponent":  "sensor"
+}

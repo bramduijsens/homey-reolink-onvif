@@ -66,11 +66,9 @@
       username: document.getElementById('username').value,
       password: document.getElementById('password').value,
     })
-      .then(function (device) {
-        return Homey.createDevice(device);
-      })
       .then(function () {
-        Homey.done();
+        Homey.hideLoadingOverlay();
+        return Homey.nextView();
       })
       .catch(function (err) {
         Homey.hideLoadingOverlay();

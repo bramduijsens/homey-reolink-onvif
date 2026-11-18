@@ -1,0 +1,21 @@
+{
+    "type":  "boolean",
+    "title":  {
+                  "en":  "Pet"
+              },
+    "titleTrue":  {
+                      "en":  "Pet detected"
+                  },
+    "titleFalse":  {
+                       "en":  "No pet"
+                   },
+    "insightsTitleTrue":  {
+                              "en":  "Pet detected"
+                          },
+    "insightsTitleFalse":  {
+                               "en":  "Pet no longer detected"
+                           },
+    "getable":  true,
+    "setable":  false,
+    "uiComponent":  "sensor"
+}

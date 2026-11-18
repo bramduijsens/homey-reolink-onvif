@@ -8,6 +8,8 @@ const HOST_PATTERN = /^[A-Za-z0-9.-]+$/;
 
 class DoorbellDriver extends Homey.Driver {
   async onPair(session) {
+    let device = null;
+
     session.setHandler('discover', async () => {
       try {
         return await discover();
@@ -27,7 +29,7 @@ class DoorbellDriver extends Homey.Driver {
 
       const client = new OnvifClient({ host: hostName, port: portNumber, username, password });
       const info = await client.getDeviceInformation();
-      return {
+      device = {
         name: info.model,
         data: { id: info.serialNumber },
         settings: {
@@ -39,6 +41,11 @@ class DoorbellDriver extends Homey.Driver {
           firmware: info.firmwareVersion,
         },
       };
+    });
+
+    session.setHandler('list_devices', async () => {
+      this.log('Listing devices for pairing:', device ? device.name : 'none');
+      return device ? [device] : [];
     });
   }
 }

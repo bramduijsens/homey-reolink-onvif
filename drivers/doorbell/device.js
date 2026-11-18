@@ -7,12 +7,12 @@ const { Subscriber } = require('../../lib/subscriber');
 
 const KIND_CAPABILITIES = {
   motion: 'alarm_motion',
-  person: 'alarm_generic.person',
-  vehicle: 'alarm_generic.vehicle',
-  pet: 'alarm_generic.pet',
-  face: 'alarm_generic.face',
-  package: 'alarm_generic.package',
-  doorbell: 'alarm_generic.doorbell',
+  person: 'alarm_person',
+  vehicle: 'alarm_vehicle',
+  pet: 'alarm_pet',
+  face: 'alarm_face',
+  package: 'alarm_package',
+  doorbell: 'alarm_doorbell',
 };
 
 const IMAGE_REFRESH_MS = 2000;

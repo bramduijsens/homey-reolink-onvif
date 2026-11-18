@@ -1,0 +1,21 @@
+{
+    "type":  "boolean",
+    "title":  {
+                  "en":  "Face"
+              },
+    "titleTrue":  {
+                      "en":  "Face detected"
+                  },
+    "titleFalse":  {
+                       "en":  "No face"
+                   },
+    "insightsTitleTrue":  {
+                              "en":  "Face detected"
+                          },
+    "insightsTitleFalse":  {
+                               "en":  "Face no longer detected"
+                           },
+    "getable":  true,
+    "setable":  false,
+    "uiComponent":  "sensor"
+}

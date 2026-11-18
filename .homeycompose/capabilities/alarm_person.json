@@ -1,0 +1,21 @@
+{
+    "type":  "boolean",
+    "title":  {
+                  "en":  "Person"
+              },
+    "titleTrue":  {
+                      "en":  "Person detected"
+                  },
+    "titleFalse":  {
+                       "en":  "No person"
+                   },
+    "insightsTitleTrue":  {
+                              "en":  "Person detected"
+                          },
+    "insightsTitleFalse":  {
+                               "en":  "Person no longer detected"
+                           },
+    "getable":  true,
+    "setable":  false,
+    "uiComponent":  "sensor"
+}

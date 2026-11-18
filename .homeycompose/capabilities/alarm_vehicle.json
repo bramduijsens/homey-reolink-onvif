@@ -1,0 +1,21 @@
+{
+    "type":  "boolean",
+    "title":  {
+                  "en":  "Vehicle"
+              },
+    "titleTrue":  {
+                      "en":  "Vehicle detected"
+                  },
+    "titleFalse":  {
+                       "en":  "No vehicle"
+                   },
+    "insightsTitleTrue":  {
+                              "en":  "Vehicle detected"
+                          },
+    "insightsTitleFalse":  {
+                               "en":  "Vehicle no longer detected"
+                           },
+    "getable":  true,
+    "setable":  false,
+    "uiComponent":  "sensor"
+}
