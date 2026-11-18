@@ -1,0 +1,18 @@
+{
+  "name": "homey-reolink-onvif",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Homey app that adds Reolink video doorbells (and other ONVIF event sources) via ONVIF.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bramduijsens/homey-reolink-onvif.git"
+  },
+  "scripts": {
+    "test": "node --test \"test/**/*.test.js\"",
+    "live-check": "node scripts/live-check.js"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^5.0.0"
+  }
+}
