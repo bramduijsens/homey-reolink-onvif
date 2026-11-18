@@ -1,0 +1,20 @@
+[
+  {
+    "type": "group",
+    "label": { "en": "Connection" },
+    "children": [
+      { "id": "host", "type": "text", "label": { "en": "IP address or host name" }, "value": "" },
+      { "id": "port", "type": "number", "label": { "en": "ONVIF port" }, "value": 8000, "min": 1, "max": 65535 },
+      { "id": "username", "type": "text", "label": { "en": "Username" }, "value": "" },
+      { "id": "password", "type": "password", "label": { "en": "Password" }, "value": "" }
+    ]
+  },
+  {
+    "type": "group",
+    "label": { "en": "Device information" },
+    "children": [
+      { "id": "model", "type": "label", "label": { "en": "Model" }, "value": "" },
+      { "id": "firmware", "type": "label", "label": { "en": "Firmware" }, "value": "" }
+    ]
+  }
+]

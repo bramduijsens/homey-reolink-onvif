@@ -1,0 +1,219 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "io.github.bramduijsens.reolink-onvif",
+  "version": "1.0.0",
+  "compatibility": ">=12.0.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Reolink ONVIF"
+  },
+  "description": {
+    "en": "Adds Reolink video doorbells to Homey over ONVIF: motion, person, vehicle, pet, face and package detection, doorbell press and camera snapshots."
+  },
+  "category": [
+    "security"
+  ],
+  "brandColor": "#2B6CB0",
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "bramduijsens"
+  },
+  "source": "https://github.com/bramduijsens/homey-reolink-onvif",
+  "bugs": {
+    "url": "https://github.com/bramduijsens/homey-reolink-onvif/issues"
+  },
+  "flow": {
+    "triggers": [
+      {
+        "id": "doorbell_pressed",
+        "title": {
+          "en": "Doorbell pressed"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=doorbell"
+          }
+        ]
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "Reolink Doorbell"
+      },
+      "class": "doorbell",
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "lan"
+      ],
+      "capabilities": [
+        "alarm_motion",
+        "alarm_generic.person",
+        "alarm_generic.vehicle",
+        "alarm_generic.pet",
+        "alarm_generic.face",
+        "alarm_generic.package",
+        "alarm_generic.doorbell"
+      ],
+      "capabilitiesOptions": {
+        "alarm_generic.person": {
+          "title": {
+            "en": "Person"
+          },
+          "titleTrue": {
+            "en": "Person detected"
+          },
+          "titleFalse": {
+            "en": "No person"
+          }
+        },
+        "alarm_generic.vehicle": {
+          "title": {
+            "en": "Vehicle"
+          },
+          "titleTrue": {
+            "en": "Vehicle detected"
+          },
+          "titleFalse": {
+            "en": "No vehicle"
+          }
+        },
+        "alarm_generic.pet": {
+          "title": {
+            "en": "Pet"
+          },
+          "titleTrue": {
+            "en": "Pet detected"
+          },
+          "titleFalse": {
+            "en": "No pet"
+          }
+        },
+        "alarm_generic.face": {
+          "title": {
+            "en": "Face"
+          },
+          "titleTrue": {
+            "en": "Face detected"
+          },
+          "titleFalse": {
+            "en": "No face"
+          }
+        },
+        "alarm_generic.package": {
+          "title": {
+            "en": "Package"
+          },
+          "titleTrue": {
+            "en": "Package detected"
+          },
+          "titleFalse": {
+            "en": "No package"
+          }
+        },
+        "alarm_generic.doorbell": {
+          "title": {
+            "en": "Doorbell"
+          },
+          "titleTrue": {
+            "en": "Doorbell pressed"
+          },
+          "titleFalse": {
+            "en": "Doorbell idle"
+          }
+        }
+      },
+      "images": {
+        "small": "/drivers/doorbell/assets/images/small.png",
+        "large": "/drivers/doorbell/assets/images/large.png",
+        "xlarge": "/drivers/doorbell/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "connect"
+        }
+      ],
+      "id": "doorbell",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Connection"
+          },
+          "children": [
+            {
+              "id": "host",
+              "type": "text",
+              "label": {
+                "en": "IP address or host name"
+              },
+              "value": ""
+            },
+            {
+              "id": "port",
+              "type": "number",
+              "label": {
+                "en": "ONVIF port"
+              },
+              "value": 8000,
+              "min": 1,
+              "max": 65535
+            },
+            {
+              "id": "username",
+              "type": "text",
+              "label": {
+                "en": "Username"
+              },
+              "value": ""
+            },
+            {
+              "id": "password",
+              "type": "password",
+              "label": {
+                "en": "Password"
+              },
+              "value": ""
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Device information"
+          },
+          "children": [
+            {
+              "id": "model",
+              "type": "label",
+              "label": {
+                "en": "Model"
+              },
+              "value": ""
+            },
+            {
+              "id": "firmware",
+              "type": "label",
+              "label": {
+                "en": "Firmware"
+              },
+              "value": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

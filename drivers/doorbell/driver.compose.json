@@ -1,0 +1,53 @@
+{
+  "name": { "en": "Reolink Doorbell" },
+  "class": "doorbell",
+  "platforms": ["local"],
+  "connectivity": ["lan"],
+  "capabilities": [
+    "alarm_motion",
+    "alarm_generic.person",
+    "alarm_generic.vehicle",
+    "alarm_generic.pet",
+    "alarm_generic.face",
+    "alarm_generic.package",
+    "alarm_generic.doorbell"
+  ],
+  "capabilitiesOptions": {
+    "alarm_generic.person": {
+      "title": { "en": "Person" },
+      "titleTrue": { "en": "Person detected" },
+      "titleFalse": { "en": "No person" }
+    },
+    "alarm_generic.vehicle": {
+      "title": { "en": "Vehicle" },
+      "titleTrue": { "en": "Vehicle detected" },
+      "titleFalse": { "en": "No vehicle" }
+    },
+    "alarm_generic.pet": {
+      "title": { "en": "Pet" },
+      "titleTrue": { "en": "Pet detected" },
+      "titleFalse": { "en": "No pet" }
+    },
+    "alarm_generic.face": {
+      "title": { "en": "Face" },
+      "titleTrue": { "en": "Face detected" },
+      "titleFalse": { "en": "No face" }
+    },
+    "alarm_generic.package": {
+      "title": { "en": "Package" },
+      "titleTrue": { "en": "Package detected" },
+      "titleFalse": { "en": "No package" }
+    },
+    "alarm_generic.doorbell": {
+      "title": { "en": "Doorbell" },
+      "titleTrue": { "en": "Doorbell pressed" },
+      "titleFalse": { "en": "Doorbell idle" }
+    }
+  },
+  "images": {
+    "small": "/drivers/doorbell/assets/images/small.png",
+    "large": "/drivers/doorbell/assets/images/large.png",
+    "xlarge": "/drivers/doorbell/assets/images/xlarge.png"
+  },
+  "pair": [{ "id": "connect" }]
+}

@@ -29,6 +29,11 @@ function fakeDevice(responses) {
 
 const base = (port) => `http://127.0.0.1:${port}`;
 
+const SYSTEM_TIME = '<tds:GetSystemDateAndTimeResponse xmlns:tds="urn:d"><tds:SystemDateAndTime><tt:UTCDateTime xmlns:tt="urn:t">'
+  + '<tt:Time><tt:Hour>1</tt:Hour><tt:Minute>0</tt:Minute><tt:Second>0</tt:Second></tt:Time>'
+  + '<tt:Date><tt:Year>2020</tt:Year><tt:Month>1</tt:Month><tt:Day>1</tt:Day></tt:Date>'
+  + '</tt:UTCDateTime></tds:SystemDateAndTime></tds:GetSystemDateAndTimeResponse>';
+
 test('syncTime computes the offset to the device clock and signs later calls with it', async () => {
   const { server, requests, port } = await fakeDevice({
     GetSystemDateAndTime: '<tds:GetSystemDateAndTimeResponse xmlns:tds="urn:d"><tds:SystemDateAndTime><tt:UTCDateTime xmlns:tt="urn:t">'
@@ -54,6 +59,7 @@ test('syncTime computes the offset to the device clock and signs later calls wit
 
 test('createPullPoint, pullMessages and unsubscribe use the advertised addresses', async () => {
   const { server, requests, port } = await fakeDevice({
+    GetSystemDateAndTime: SYSTEM_TIME,
     GetCapabilities: (srv) => `<tds:GetCapabilitiesResponse xmlns:tds="urn:d"><tds:Capabilities><tt:Events xmlns:tt="urn:t"><tt:XAddr>${base(srv.address().port)}/events</tt:XAddr></tt:Events></tds:Capabilities></tds:GetCapabilitiesResponse>`,
     CreatePullPointSubscription: (srv) => `<tev:CreatePullPointSubscriptionResponse xmlns:tev="urn:e" xmlns:wsa="urn:a"><tev:SubscriptionReference><wsa:Address>${base(srv.address().port)}/sub1</wsa:Address></tev:SubscriptionReference></tev:CreatePullPointSubscriptionResponse>`,
     PullMessages: '<tev:PullMessagesResponse xmlns:tev="urn:e"/>',

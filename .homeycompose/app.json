@@ -1,0 +1,21 @@
+{
+  "id": "io.github.bramduijsens.reolink-onvif",
+  "version": "1.0.0",
+  "compatibility": ">=12.0.0",
+  "sdk": 3,
+  "platforms": ["local"],
+  "name": { "en": "Reolink ONVIF" },
+  "description": {
+    "en": "Adds Reolink video doorbells to Homey over ONVIF: motion, person, vehicle, pet, face and package detection, doorbell press and camera snapshots."
+  },
+  "category": ["security"],
+  "brandColor": "#2B6CB0",
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": { "name": "bramduijsens" },
+  "source": "https://github.com/bramduijsens/homey-reolink-onvif",
+  "bugs": { "url": "https://github.com/bramduijsens/homey-reolink-onvif/issues" }
+}

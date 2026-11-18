@@ -107,6 +107,24 @@ test('renews when half of the TTL has passed', async () => {
   assert.ok(client.calls.includes('renew'));
 });
 
+test('emits recovered once after a failure is followed by a successful pull', async () => {
+  let pulls = 0;
+  const client = fakeClient({
+    async pullMessages() {
+      pulls += 1;
+      if (pulls === 1) throw new Error('boom');
+      await new Promise((r) => setTimeout(r, 5));
+      return [];
+    },
+  });
+  const sub = new Subscriber(client, fast);
+  sub.on('failure', () => {});
+  const recovered = once(sub, 'recovered');
+  sub.start();
+  await recovered;
+  await sub.stop();
+});
+
 test('stop is safe when never started', async () => {
   await new Subscriber(fakeClient(), fast).stop();
 });

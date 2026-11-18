@@ -1,0 +1,80 @@
+<form id="form" class="homey-form" autocomplete="off">
+  <div class="homey-form-group" id="found-group" hidden>
+    <label class="homey-form-label" for="found" data-i18n="pair.found"></label>
+    <select class="homey-form-select" id="found"></select>
+  </div>
+  <div class="homey-form-group">
+    <label class="homey-form-label" for="host" data-i18n="pair.host"></label>
+    <input class="homey-form-input" id="host" type="text" required />
+  </div>
+  <div class="homey-form-group">
+    <label class="homey-form-label" for="port" data-i18n="pair.port"></label>
+    <input class="homey-form-input" id="port" type="number" min="1" max="65535" value="8000" required />
+  </div>
+  <div class="homey-form-group">
+    <label class="homey-form-label" for="username" data-i18n="pair.username"></label>
+    <input class="homey-form-input" id="username" type="text" required />
+  </div>
+  <div class="homey-form-group">
+    <label class="homey-form-label" for="password" data-i18n="pair.password"></label>
+    <input class="homey-form-input" id="password" type="password" required />
+  </div>
+  <button class="homey-button-primary-full" type="submit" data-i18n="pair.connect"></button>
+</form>
+
+<script type="application/javascript">
+  Homey.setTitle(Homey.__('pair.title'));
+
+  var found = document.getElementById('found');
+  var hostInput = document.getElementById('host');
+  var portInput = document.getElementById('port');
+  var discovered = [];
+
+  function option(value, label) {
+    var el = document.createElement('option');
+    el.value = value;
+    el.textContent = label;
+    return el;
+  }
+
+  Homey.emit('discover')
+    .then(function (list) {
+      if (!list || !list.length) return;
+      discovered = list;
+      found.appendChild(option('', Homey.__('pair.choose')));
+      list.forEach(function (device, index) {
+        var name = device.name || device.hardware || 'ONVIF';
+        found.appendChild(option(String(index), name + ' (' + device.host + ')'));
+      });
+      document.getElementById('found-group').hidden = false;
+    })
+    .catch(function () {});
+
+  found.addEventListener('change', function () {
+    var device = discovered[Number(found.value)];
+    if (!device) return;
+    hostInput.value = device.host;
+    portInput.value = device.port;
+  });
+
+  document.getElementById('form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    Homey.showLoadingOverlay();
+    Homey.emit('connect', {
+      host: hostInput.value,
+      port: portInput.value,
+      username: document.getElementById('username').value,
+      password: document.getElementById('password').value,
+    })
+      .then(function (device) {
+        return Homey.createDevice(device);
+      })
+      .then(function () {
+        Homey.done();
+      })
+      .catch(function (err) {
+        Homey.hideLoadingOverlay();
+        Homey.alert((err && err.message) || String(err), 'error');
+      });
+  });
+</script>

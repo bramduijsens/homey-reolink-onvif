@@ -1,0 +1,17 @@
+{
+  "camera": {
+    "snapshot": "Snapshot"
+  },
+  "pair": {
+    "title": "Connect your doorbell",
+    "found": "Doorbells found on your network",
+    "choose": "Choose a doorbell or enter details below",
+    "host": "IP address or host name",
+    "port": "ONVIF port",
+    "username": "Username",
+    "password": "Password",
+    "connect": "Connect",
+    "invalid_host": "Enter a valid IP address or host name.",
+    "invalid_port": "Enter a port between 1 and 65535."
+  }
+}
