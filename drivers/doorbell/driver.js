@@ -6,7 +6,30 @@ const { discover } = require('../../lib/discovery');
 
 const HOST_PATTERN = /^[A-Za-z0-9.-]+$/;
 
+const CONDITIONS = {
+  is_person_detected: 'alarm_person',
+  is_vehicle_detected: 'alarm_vehicle',
+  is_pet_detected: 'alarm_pet',
+  is_face_detected: 'alarm_face',
+  is_package_detected: 'alarm_package',
+  is_doorbell_pressed: 'alarm_doorbell',
+};
+
 class DoorbellDriver extends Homey.Driver {
+  async onInit() {
+    for (const [id, capability] of Object.entries(CONDITIONS)) {
+      this.homey.flow
+        .getConditionCard(id)
+        .registerRunListener(async ({ device }) => device.getCapabilityValue(capability) === true);
+    }
+    this.homey.flow
+      .getActionCard('update_snapshot')
+      .registerRunListener(async ({ device }) => device.updateSnapshot());
+    this.homey.flow
+      .getActionCard('take_snapshot')
+      .registerRunListener(async ({ device }) => ({ snapshot: await device.takeSnapshot() }));
+  }
+
   async onPair(session) {
     let device = null;
 

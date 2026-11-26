@@ -82,6 +82,21 @@ class DoorbellDevice extends Homey.Device {
     this._image.update().catch(this.error);
   }
 
+  async updateSnapshot() {
+    if (!this._client) throw new Error('Not connected');
+    await this._image.update();
+  }
+
+  async takeSnapshot() {
+    if (!this._client) throw new Error('Not connected');
+    const { body } = await this._client.fetchSnapshot();
+    const image = await this.homey.images.createImage();
+    image.setStream(async (stream) => {
+      stream.end(body);
+    });
+    return image;
+  }
+
   async onSettings({ newSettings }) {
     await this._disconnect();
     this._connect(newSettings);

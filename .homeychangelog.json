@@ -1,4 +1,7 @@
 {
+  "1.1.0": {
+    "en": "Added Flow cards: update the snapshot, take a snapshot (image tag for Advanced Flows) and conditions for person, vehicle, pet, face, package and doorbell press."
+  },
   "1.0.0": {
     "en": "Initial release: Reolink video doorbell support over ONVIF with motion, person, vehicle, pet, face, package and doorbell press detection, a Doorbell pressed Flow trigger and a camera snapshot."
   }

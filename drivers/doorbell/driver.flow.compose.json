@@ -44,5 +44,50 @@
       "id": "alarm_package_false",
       "title": { "en": "Package no longer detected" }
     }
+  ],
+  "conditions": [
+    {
+      "id": "is_person_detected",
+      "title": { "en": "A person !{{is|isn't}} detected" }
+    },
+    {
+      "id": "is_vehicle_detected",
+      "title": { "en": "A vehicle !{{is|isn't}} detected" }
+    },
+    {
+      "id": "is_pet_detected",
+      "title": { "en": "A pet !{{is|isn't}} detected" }
+    },
+    {
+      "id": "is_face_detected",
+      "title": { "en": "A face !{{is|isn't}} detected" }
+    },
+    {
+      "id": "is_package_detected",
+      "title": { "en": "A package !{{is|isn't}} detected" }
+    },
+    {
+      "id": "is_doorbell_pressed",
+      "title": { "en": "The doorbell !{{is|isn't}} pressed" }
+    }
+  ],
+  "actions": [
+    {
+      "id": "update_snapshot",
+      "title": { "en": "Update the snapshot" },
+      "hint": { "en": "Fetches a new snapshot and shows it on the device tile." }
+    },
+    {
+      "id": "take_snapshot",
+      "title": { "en": "Take a snapshot" },
+      "hint": { "en": "Fetches a new snapshot and returns it as an image tag. Only available in Advanced Flows." },
+      "tokens": [
+        {
+          "name": "snapshot",
+          "type": "image",
+          "title": { "en": "Snapshot" }
+        }
+      ]
+    }
   ]
 }
