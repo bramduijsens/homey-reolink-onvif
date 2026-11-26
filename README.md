@@ -1,8 +1,8 @@
 # Reolink ONVIF for Homey
 
-Adds Reolink video doorbells to Homey Pro over ONVIF. The app talks to the doorbell on your local network only; no cloud account and no Reolink HTTP API are needed.
+Adds Reolink video doorbells to Homey Pro over ONVIF. The app talks to the doorbell on your local network only; no cloud account needed.
 
-> Status: work in progress. The ONVIF client has been verified against a real doorbell, but the Homey app itself has not been run on a Homey yet (see [What has been tested](#what-has-been-tested)).
+> Status: work in progress. The ONVIF client has been verified against a real doorbell and the Homey app itself has been running for a couple of days now. (see [What has been tested](#what-has-been-tested)).
 
 ## Supported devices
 
@@ -46,8 +46,9 @@ Other features:
 ## Requirements
 
 - Homey Pro (platform `local`), Homey firmware 12.0.0 or later.
+- Reolink Video Doorbell (D340B) with FW v3.0.0.7386_26110302 connected to wired power.
 - ONVIF enabled on the doorbell and a local user account on it.
-- The doorbell and Homey on the same network (WS-Discovery uses UDP multicast on port 3702).
+- The doorbell and Homey on the same network.
 
 ## How this app came about
 
@@ -76,14 +77,6 @@ The app was built step by step, with the doorbell as the reference device and AI
 - pull-point subscription received the initial state of all topics and the changes for person, motion and doorbell press with the expected states.
 
 **Static validation:** `homey app validate --level publish` passes.
-
-**Not yet tested:**
-
-- running the app on a Homey (`homey app run`), including pairing, discovery from the Homey, and the camera image tile,
-- whether Homey fires the "detected" / "no longer detected" triggers automatically when the custom capabilities change (an earlier version with `alarm_generic.*` sub-capabilities had no usable Flow cards, so it was replaced),
-- vehicle, pet, face and package detection (only motion, person and doorbell have been triggered on the real device),
-- long-running behaviour (subscription renewal over many hours, network loss, doorbell reboot),
-- other doorbell models and firmware versions.
 
 ## Development
 
